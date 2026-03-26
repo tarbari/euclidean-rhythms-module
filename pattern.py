@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from utils import Direction
+from direction import Direction
 
 
 @dataclass
