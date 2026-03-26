@@ -23,36 +23,6 @@ def main(args: argparse.Namespace):
         pattern.move_playhead()
         sleep(0.1)
 
-    # while True:
-    #     print_menu()
-    #
-    #     v_pattern = construct_visual_pattern(pattern)
-    #     print_pattern(v_pattern)
-    #
-    #
-    #     match read_input():
-    #         case UserChoice.INCREASE_STEP:
-    #             steps += 1
-    #             pattern = create_pattern(events, steps)
-    #
-    #         case UserChoice.DECREASE_STEP:
-    #             steps -= 1
-    #             pattern = create_pattern(events, steps)
-    #
-    #         case UserChoice.NEXT_PATTERN:
-    #             events += 1
-    #             pattern = create_pattern(events, steps)
-    #
-    #         case UserChoice.PREVIOUS_PATTERN:
-    #             events -= 1
-    #             pattern = create_pattern(events, steps)
-    #
-    #         case UserChoice.ROTATE_FORWARDS:
-    #             rotate_pattern(pattern)
-    #
-    #         case UserChoice.ROTATE_BACKWARDS:
-    #             rotate_pattern(pattern, Direction.BACKWARDS)
-
 
 if __name__ == "__main__":
     args = parse_args()
