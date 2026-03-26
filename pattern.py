@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 from utils import Direction
 
 
@@ -9,16 +10,11 @@ class Pattern:
     playhead_track: list[str]
     playhead_pos: int = 0
 
-
-    def rotate_pattern(self,
-                    direction: Direction = Direction.FORWARDS) -> None:
-        """Rotates the pattern in-place.
-
-        Moves the pattern to the specified direction.
+    def rotate_pattern(self, direction: Direction = Direction.FORWARDS) -> None:
+        """Rotates the pattern one step to the specified direction.
 
         Args:
-            pattern: pattern to manipulate.
-            rotation: Direction of rotation.
+            rotation: Direction of rotation. Defaults to forwards.
         """
 
         match direction:
@@ -26,7 +22,6 @@ class Pattern:
                 self.pattern.insert(0, self.pattern.pop())
             case Direction.BACKWARDS:
                 self.pattern.append(self.pattern.pop(0))
-
 
     def print_pattern(self) -> None:
         """Assumes mono spaced font."""
@@ -40,10 +35,8 @@ class Pattern:
         # print()
         #
 
-
     def print_playhead(self) -> None:
         print("".join(self.playhead_track), end="\r")
-
 
     def move_playhead(self) -> None:
         if self.playhead_pos >= len(self.playhead_track) - 1:
@@ -52,4 +45,3 @@ class Pattern:
             self.playhead_pos += 1
 
         self.playhead_track.insert(0, self.playhead_track.pop())
-
