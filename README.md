@@ -23,5 +23,8 @@ Very much in developement and not currently working.
 - Clock input
 - On-Off-On switch for choosing between internal - off - external clock
 
-### To decide
+### TODO
+
+- Cap to filter the clock input
+  - In simulation the voltage does not seem to peak over 3.3V
 
