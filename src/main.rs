@@ -21,10 +21,11 @@ const TRIGGER_LENGTH_MS: u64 = 100;
 static TRIGGER_SIGNAL: Signal<CriticalSectionRawMutex, ()> = Signal::new();
 
 #[embassy_executor::task]
-async fn trigger_task(mut button: Input<'static>) {
+async fn trigger_task(mut clock_in: Input<'static>) {
     loop {
-        button.wait_for_rising_edge().await;
+        clock_in.wait_for_rising_edge().await;
         TRIGGER_SIGNAL.signal(());
+        clock_in.wait_for_falling_edge().await;
     }
 }
 
@@ -39,11 +40,11 @@ async fn trigger_task(mut button: Input<'static>) {
 async fn main(spawner: Spawner) {
     let p = embassy_rp::init(Default::default());
     let mut led = Output::new(p.PIN_15, Level::Low);
-    let trigger = Input::new(p.PIN_14, Pull::Down);
+    let clock = Input::new(p.PIN_14, Pull::Down);
 
     // Is there a way to handle the potential error cases resulting from the
     // spawn? I will ignore this for now, and get back to it later.
-    spawner.spawn(trigger_task(trigger)).unwrap();
+    spawner.spawn(trigger_task(clock)).unwrap();
 
     let mut playhead = 0;
 
