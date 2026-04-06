@@ -19,12 +19,25 @@ Very much in developement and not currently working.
 - LED track that shows the end step, pattern, and current step
   - 16x WS2812 led ring
 - Internal clock
-  - Digital encoder, changes BPM
 - Clock input
 - On-Off-On switch for choosing between internal - off - external clock
 
 ### TODO
 
-- Cap to filter the clock input
+-[] Firmware (split this into smaller todo blocks)
+-[] FW: Logic so when the pattern is stopped (switch to mid pos) it starts from 
+    beginning when continued
+-[] FW: LED logic (split this into smaller todo blocks)
+-[] Schematics: Encoder
+-[] Schematics: Button to change track (related to encoder)
+-[] Schematics: Output circuitry (+5V output triggers of 5ms)
+-[] Schematics: LED track circuitry
+-[] Schematics: LED selected track circuitry
+-[] Does the clock input need a cap to filter voltage spikes?
   - In simulation the voltage does not seem to peak over 3.3V
+  - 555 output was spiking a lot, bet when added to the signal generator input
+    the waveform was malformed like crazy
+  - Need to test this in practice and check it with a scope
+-[x] Clock input
+-[x] Internal clock
 
